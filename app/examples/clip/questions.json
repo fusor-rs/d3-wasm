@@ -1,0 +1,15 @@
+{
+  "direction": {
+    "type": "choice",
+    "instructions": "Which way does the square move?",
+    "criteria": {
+      "right": "From left to right",
+      "left": "From right to left",
+      "still": "It does not move"
+    }
+  },
+  "color_change": {
+    "type": "noul",
+    "instructions": "Does the square change color?"
+  }
+}

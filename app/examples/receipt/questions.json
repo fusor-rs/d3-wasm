@@ -1,0 +1,24 @@
+{
+  "route": {
+    "type": "choice",
+    "instructions": "Which team should handle this request?",
+    "criteria": {
+      "returns": "Refunds, replacements and damaged deliveries",
+      "billing": "Payments, invoices and charges",
+      "technical": "Product setup and faults"
+    }
+  },
+  "on_receipt": {
+    "type": "noul",
+    "instructions": "Does the receipt list the blender?"
+  },
+  "payment": {
+    "type": "choice",
+    "instructions": "How was the order paid?",
+    "criteria": {
+      "card": null,
+      "cash": null,
+      "gift card": null
+    }
+  }
+}

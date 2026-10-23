@@ -1,0 +1,96 @@
+{
+  "support": {
+    "model": "checkpoint-nano",
+    "answers": {
+      "route": {
+        "type": "choice",
+        "choice": "returns",
+        "probabilities": {
+          "returns": 0.9978649124164262,
+          "billing": 0.0002697520568201795,
+          "technical": 0.0018653355267536278
+        },
+        "confidence": 0.9853706480473675
+      },
+      "receipt": {
+        "type": "noul",
+        "noul": 0.9998346311373566
+      },
+      "urgency": {
+        "type": "score",
+        "score": 1.7745415004816187,
+        "probabilities": {
+          "0": 0.060434234522920745,
+          "1": 0.10459003047253994,
+          "2": 0.8349757350045394
+        },
+        "confidence": 0.4936209689882243,
+        "legend": {
+          "0": "Routine",
+          "1": "Soon",
+          "2": "Today"
+        }
+      }
+    },
+    "usage": {
+      "input_tokens": 345,
+      "output_tokens": 0
+    }
+  },
+  "receipt": {
+    "model": "checkpoint-nano",
+    "answers": {
+      "route": {
+        "type": "choice",
+        "choice": "returns",
+        "probabilities": {
+          "returns": 0.991219842363066,
+          "billing": 0.0011214956444488026,
+          "technical": 0.007658661992485213
+        },
+        "confidence": 0.9511453716764646
+      },
+      "on_receipt": {
+        "type": "noul",
+        "noul": 0.9987947203368805
+      },
+      "payment": {
+        "type": "choice",
+        "choice": "card",
+        "probabilities": {
+          "card": 0.999447600154324,
+          "cash": 0.0002782283578689586,
+          "gift card": 0.00027417148780709076
+        },
+        "confidence": 0.9953770681987841
+      }
+    },
+    "usage": {
+      "input_tokens": 2938,
+      "output_tokens": 0
+    }
+  },
+  "clip": {
+    "model": "checkpoint-nano",
+    "answers": {
+      "direction": {
+        "type": "choice",
+        "choice": "right",
+        "probabilities": {
+          "right": 0.9881532323530519,
+          "left": 0.002846106287344948,
+          "still": 0.009000661359603146
+        },
+        "confidence": 0.9355033048883856
+      },
+      "color_change": {
+        "type": "noul",
+        "noul": 0.9754429655899383
+      }
+    },
+    "usage": {
+      "input_tokens": 1720,
+      "output_tokens": 0
+    }
+  }
+}
