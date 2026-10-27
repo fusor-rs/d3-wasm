@@ -11,6 +11,8 @@
 
 **Three questions about a receipt photo decided in 5.4 s**, in Chrome on an Apple M4 Pro, eight threads, with d3-lite. [Benchmarks](benchmarks.md)
 
+<a href="https://huggingface.co/spaces/fusorlabs/d3-wasm"><img src="assets/demo/demo.gif" alt="d3-wasm in Chrome: three questions about a receipt photo decided with probabilities by d3-lite on the CPU in 4.7 s, zero network requests" width="720"></a>
+
 Describe a situation, ask questions about it with their options, add images or videos if you have them, and get every answer with a probability for every option: vLLM Semantic Router's Decision 3.0 models, [d3-nano](https://huggingface.co/vllm-sr/d3-nano) (2B) and [d3-lite](https://huggingface.co/vllm-sr/d3-lite) (0.8B), computed on your own device. No server, no API key, no GPU required, and once the model has loaded, nothing you type or drop leaves the page.
 
 d3-wasm is the app around the models: a [fusor](https://github.com/fusor-rs/fusor) page, the browser runtime and a native CLI. The models themselves, compiled to WebAssembly, are built with [fusor-ai](https://github.com/fusor-rs/fusor-ai), the toolkit for AI runtimes in Rust and WebAssembly, from the published weights.
