@@ -18,7 +18,11 @@ const THREADS = Math.min(cores, requestedThreads > 0 ? requestedThreads : Math.m
 // pins a runtime build.
 const SIZES = ['lite', 'nano'];
 const SIZE = SIZES.includes(params.get('size')) ? params.get('size') : SIZES[0];
-const MODEL_URL = new URL(params.get('model') ?? `model/${SIZE}/`, document.baseURI).href;
+// A Hugging Face Space holds at most 1 GB, so the Space loads the bundle from the model repo
+// fusorlabs/d3-web (`just deploy-model`) instead of from beside the page.
+const HOSTED_MODEL = 'https://huggingface.co/fusorlabs/d3-web/resolve/main/';
+const DEFAULT_MODEL = location.hostname.endsWith('.hf.space') ? HOSTED_MODEL : 'model/';
+const MODEL_URL = new URL(params.get('model') ?? `${DEFAULT_MODEL}${SIZE}/`, document.baseURI).href;
 // The runtime's limits (`d3::session::MAX_IMAGES`, `MAX_VIDEOS`) and the reference's sampling
 // (`d3_runtime`'s `VIDEO_FPS`, `VIDEO_MIN_FRAMES`, `VIDEO_MAX_FRAMES`).
 const MAX_IMAGES = 8;

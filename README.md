@@ -7,13 +7,17 @@
 
 # Decisions about text, images and videos in the browser, on the CPU
 
+**[Try it in your browser](https://huggingface.co/spaces/fusorlabs/d3-wasm)**: no install, no server. The model downloads once and runs on your CPU.
+
+**Three questions about a receipt photo decided in 5.4 s**, in Chrome on an Apple M4 Pro, eight threads, with d3-lite. [Benchmarks](benchmarks.md)
+
 Describe a situation, ask questions about it with their options, add images or videos if you have them, and get every answer with a probability for every option: vLLM Semantic Router's Decision 3.0 models, [d3-nano](https://huggingface.co/vllm-sr/d3-nano) (2B) and [d3-lite](https://huggingface.co/vllm-sr/d3-lite) (0.8B), computed on your own device. No server, no API key, no GPU required, and once the model has loaded, nothing you type or drop leaves the page.
 
 d3-wasm is the app around the models: a [fusor](https://github.com/fusor-rs/fusor) page, the browser runtime and a native CLI. The models themselves, compiled to WebAssembly, are built with [fusor-ai](https://github.com/fusor-rs/fusor-ai), the toolkit for AI runtimes in Rust and WebAssembly, from the published weights.
 
 **In development · v0.1**: this is experimental software. See [status and known limitations](#status-and-known-limitations).
 
-[Run it](#run-it-locally) · [How it works](#how-it-works) · [How fast is it](#how-fast-is-it) · [Benchmarks](benchmarks.md) · [Status](#status-and-known-limitations)
+[Run it](#run-it-locally) · [Try it online](#try-it-online) · [How it works](#how-it-works) · [How fast is it](#how-fast-is-it) · [Benchmarks](benchmarks.md) · [Status](#status-and-known-limitations)
 
 ## Run it locally
 
@@ -27,6 +31,10 @@ just ui
 and open the address it prints. `just ui` installs the pinned tools (the threads toolchain with rustup; wasm-bindgen, binaryen and the fusor CLI into `.tools/`), downloads both checkpoints at pinned revisions (4.4 GB and 1.7 GB, each file sha256-checked), compiles them into a 2066 MB bundle for d3-nano and a 984 MB one for d3-lite, builds the four browser runtimes (a few minutes the first time, seconds after) and the page, and serves it on `http://localhost:8787` with the bundles beside it.
 
 The page loads d3-lite; the switch under the title loads d3-nano instead. Start from an example (a support ticket, a receipt, a short video clip) or write your own: the **state** in words or as JSON, and the **questions** as a JSON object, each a `choice` among described options, a `score` on ordered levels, or a yes-or-no `noul`, as the model card describes them. Add images and videos by dropping, pasting or choosing them, and press **Decide**, even while the model is still loading: the request is decided the moment the model is ready. Each question comes back with every option's probability as a bar, a score with its expected level, and the response's JSON to copy. Every decision is measured live: the time from Decide to the answers, the prompt tokens read per second, the tokens of every question and of the media, and the network requests since the model loaded, which stay at zero.
+
+## Try it online
+
+Open the Hugging Face Space [fusorlabs/d3-wasm](https://huggingface.co/spaces/fusorlabs/d3-wasm) in Chrome or Edge. The page downloads the 984 MB model once and keeps it in the browser's storage, so the next visit loads in about a second. `?size=nano` loads the 2066 MB d3-nano instead of d3-lite.
 
 ## More ways to run it
 
